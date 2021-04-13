@@ -10,8 +10,10 @@ const profile = require('./controller/profile');
 const database = knex({
     client: 'pg',
     connection: {
-      connectionString : process.env.DATABASE_URL,
-      ssl : true,
+      host : 'ec2-52-21-153-207.compute-1.amazonaws.com',
+      user : 'jxwbkpuduwxxzf',
+      password : '54a89cb8cc93d524eee0a3e2281329ffcb70ef030989c454628c381cabe27939',
+      database : 'd9rdf96j17q5i1'
     }
   });
 
@@ -22,7 +24,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res)=>{res.send(database.users) })
+app.get('/', (req, res)=>{res.send('Hello world!!!!!!') })
 
 app.get('/profile/:id',(req,res)=>{profile.handleProfileGet(req,res)})
 
